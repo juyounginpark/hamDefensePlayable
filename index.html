@@ -24,8 +24,8 @@
 
       @media (orientation: landscape) {
         body.mobile #unity-canvas {
-          width: 100vw !important;
-          height: 100vh !important;
+          width: min(100vw, calc(100vh * 16 / 9)) !important;
+          height: min(100vh, calc(100vw * 9 / 16)) !important;
           transform: translate(-50%, -50%);
         }
       }
@@ -33,8 +33,8 @@
       /* Rotate the landscape game to fit a phone whose viewport remains portrait. */
       @media (orientation: portrait) {
         body.mobile #unity-canvas {
-          width: 100vh !important;
-          height: 100vw !important;
+          width: min(100vh, calc(100vw * 16 / 9)) !important;
+          height: min(100vw, calc(100vh * 9 / 16)) !important;
           transform: translate(-50%, -50%) rotate(90deg);
         }
       }
