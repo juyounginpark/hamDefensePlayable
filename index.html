@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Unity Web Player | hamdefense</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>HamDefense</title>
     <style>
       html,
       body {
@@ -15,56 +14,34 @@
         background: #231f20;
       }
 
-      body.mobile #unity-canvas {
+      #game-frame {
         position: fixed;
         top: 50%;
         left: 50%;
         display: block;
+        width: min(100vw, calc(100vh * 16 / 9));
+        height: min(100vh, calc(100vw * 9 / 16));
+        border: 0;
+        transform: translate(-50%, -50%);
       }
 
-      @media (orientation: landscape) {
-        body.mobile #unity-canvas {
-          width: min(100vw, calc(100vh * 16 / 9)) !important;
-          height: min(100vh, calc(100vw * 9 / 16)) !important;
-          transform: translate(-50%, -50%);
-        }
-      }
-
-      /* Rotate the landscape game to fit a phone whose viewport remains portrait. */
-      @media (orientation: portrait) {
-        body.mobile #unity-canvas {
-          width: min(100vh, calc(100vw * 16 / 9)) !important;
-          height: min(100vw, calc(100vh * 9 / 16)) !important;
+      @media (orientation: portrait) and (pointer: coarse) {
+        #game-frame {
+          width: min(100vh, calc(100vw * 16 / 9));
+          height: min(100vw, calc(100vh * 9 / 16));
           transform: translate(-50%, -50%) rotate(90deg);
         }
       }
     </style>
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
-    <script src="Build/HamDefense.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // CSS rotates portrait viewports and fills landscape viewports normally.
-        document.body.classList.add("mobile");
-        document.body.style.textAlign = "left";
-      }
-
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/HamDefense.data",
-        frameworkUrl: "Build/HamDefense.framework.js",
-        codeUrl: "Build/HamDefense.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "hamdefense",
-        productVersion: "0.1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      }).then((unityInstance) => {
-      }).catch((message) => {
-        alert(message);
-      });
-    </script>
+  <body>
+    <!-- Unity stays in an unrotated 16:9 browsing context. Only this frame rotates. -->
+    <iframe
+      id="game-frame"
+      src="game.html"
+      title="HamDefense"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
   </body>
 </html>
