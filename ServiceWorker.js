@@ -31,6 +31,15 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
     e.respondWith((async function () {
       const cache = await caches.open(cacheName);
+      if (e.request.mode === 'navigate' || e.request.destination === 'document') {
+        try {
+          const fresh = await fetch(e.request, { cache: 'no-store' });
+          cache.put(e.request, fresh.clone());
+          return fresh;
+        } catch (error) {
+          return cache.match(e.request) || Response.error();
+        }
+      }
       let response = await cache.match(e.request);
       console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
       if (response) { return response; }
