@@ -1,4 +1,4 @@
-const cacheName = "DefaultCompany-hamdefense-0.1.0-rotate-input-1";
+const cacheName = "DefaultCompany-hamdefense-0.1.0";
 const contentToCache = [
     "Build/HamDefense.loader.js",
     "Build/HamDefense.framework.js",
