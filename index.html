@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>HamDefense</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #231f20;
+      }
+
+      #game-frame {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: min(100vh, calc(100vw * 16 / 9));
+        height: min(100vw, calc(100vh * 9 / 16));
+        border: 0;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      id="game-frame"
+      src="game.html?v=rotate-input-1"
+      title="HamDefense"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("ServiceWorker.js?v=rotate-input-1");
+      }
+    </script>
+  </body>
+</html>
