@@ -1,4 +1,4 @@
-const cacheName = "DefaultCompany-hamdefense-0.1.0-404-fix-1";
+const cacheName = "DefaultCompany-hamdefense-0.1.0-logo-size-1";
 const contentToCache = [
     "Build/HamDefense.loader.js",
     "Build/HamDefense.framework.js",
