@@ -1,30 +1,20 @@
-const cacheName = "DefaultCompany-hamdefense-0.1.0-logo-size-1";
+const cacheName = "DefaultCompany-hamdefense-0.1.0";
 const contentToCache = [
     "Build/HamDefense.loader.js",
     "Build/HamDefense.framework.js",
     "Build/HamDefense.data",
     "Build/HamDefense.wasm",
-    "TemplateData/style.css",
-    "game.html"
+    "TemplateData/style.css"
 
 ];
 
 self.addEventListener('install', function (e) {
     console.log('[Service Worker] Install');
-    self.skipWaiting();
     
     e.waitUntil((async function () {
       const cache = await caches.open(cacheName);
       console.log('[Service Worker] Caching all: app shell and content');
       await cache.addAll(contentToCache);
-    })());
-});
-
-self.addEventListener('activate', function (e) {
-    e.waitUntil((async function () {
-      const keys = await caches.keys();
-      await Promise.all(keys.filter(key => key !== cacheName).map(key => caches.delete(key)));
-      await self.clients.claim();
     })());
 });
 
