@@ -2,6 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="TemplateData/favicon.ico">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>HamDefense Game</title>
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -60,9 +61,9 @@
       var buildUrl = "Build";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/newVer.data.unityweb",
-        frameworkUrl: buildUrl + "/newVer.framework.js.unityweb",
-        codeUrl: buildUrl + "/newVer.wasm.unityweb",
+        dataUrl: buildUrl + "/HamDefense.data.unityweb",
+        frameworkUrl: buildUrl + "/HamDefense.framework.js.unityweb",
+        codeUrl: buildUrl + "/HamDefense.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "hamdefense",
@@ -74,7 +75,7 @@
 
       loadingBar.style.display = "block";
       var loader = document.createElement("script");
-      loader.src = buildUrl + "/newVer.loader.js";
+      loader.src = buildUrl + "/HamDefense.loader.js";
       loader.onerror = function () {
         loadingBar.style.display = "none";
         unityShowBanner("Unity 로더를 불러오지 못했습니다: " + loader.src, "error");

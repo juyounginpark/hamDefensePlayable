@@ -1,9 +1,9 @@
-const cacheName = "DefaultCompany-hamdefense-0.1.0";
+const cacheName = "DefaultCompany-hamdefense-20261114";
 const contentToCache = [
-    "Build/newVer.loader.js",
-    "Build/newVer.framework.js.unityweb",
-    "Build/newVer.data.unityweb",
-    "Build/newVer.wasm.unityweb",
+    "Build/HamDefense.loader.js",
+    "Build/HamDefense.framework.js.unityweb",
+    "Build/HamDefense.data.unityweb",
+    "Build/HamDefense.wasm.unityweb",
     "TemplateData/style.css"
 
 ];
@@ -20,12 +20,12 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('fetch', function (e) {
     e.respondWith((async function () {
-      let response = await caches.match(e.request);
+      const cache = await caches.open(cacheName);
+      let response = await cache.match(e.request);
       console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
       if (response) { return response; }
 
       response = await fetch(e.request);
-      const cache = await caches.open(cacheName);
       console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
       cache.put(e.request, response.clone());
       return response;

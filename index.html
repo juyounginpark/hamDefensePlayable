@@ -2,6 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="TemplateData/favicon.ico">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <title>HamDefense</title>
     <link rel="manifest" href="manifest.webmanifest">
@@ -162,12 +163,12 @@
 
       function startGame(mode, rotation) {
         if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("ServiceWorker.js?v=404-fix-1");
+          navigator.serviceWorker.register("ServiceWorker.js?v=hamdefense-20261114");
         }
         var frame = document.createElement("iframe");
         frame.id = "game-frame";
         frame.className = mode + (rotation ? " " + rotation : "");
-        frame.src = "game.html?v=newver-fix-2";
+        frame.src = "game.html?v=hamdefense-20261114";
         frame.title = "HamDefense";
         frame.allow = "fullscreen";
         frame.allowFullscreen = true;
