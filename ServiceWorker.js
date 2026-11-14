@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-hamdefense-0.1.0";
 const contentToCache = [
-    "Build/HamDefense.loader.js",
-    "Build/HamDefense.framework.js.unityweb",
-    "Build/HamDefense.data.unityweb",
-    "Build/HamDefense.wasm.unityweb",
+    "Build/newVer.loader.js",
+    "Build/newVer.framework.js.unityweb",
+    "Build/newVer.data.unityweb",
+    "Build/newVer.wasm.unityweb",
     "TemplateData/style.css"
 
 ];
